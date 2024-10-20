@@ -1,0 +1,11 @@
+steps:
+  # Docker Build
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 
+           'us-east1-docker.pkg.dev/${PROJECT_ID}/wolfi-notes/webapp:$COMMIT_SHA', 
+           '.']
+
+  # Docker Push
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 
+           'us-east1-docker.pkg.dev/${PROJECT_ID}/wolfi-notes/webapp:$COMMIT_SHA']
