@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webapp-config
+  labels:
+    app: note-app
+data:
+  DB_ENGINE: postgres
+  DB_HOST: postgres
+  DB_NAME: note-app
+  DB_USERNAME: notes-db-admin
+  DB_PORT: "5432"
+  

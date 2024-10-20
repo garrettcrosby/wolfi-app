@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: note-app
+  name: note-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: note-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: note-app
+    spec:
+      containers:
+      - image: note-app:wolfi-3
+        name: note-app
+        envFrom:
+        - configMapRef:
+            name: webapp-config
+        env:
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD
+        ports:
+        - containerPort: 8000
+        resources: {}
+status: {}

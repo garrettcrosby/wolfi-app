@@ -1,0 +1,58 @@
+package:
+  name: libjpeg
+  version: 3.0.4
+  epoch: 0
+  description: "libjpeg-turbo packaged for wolfi"
+  copyright:
+    - license: BSD-3-clause
+  dependencies:
+    runtime:
+  
+environment:
+  contents:
+    repositories:
+    - https://packages.wolfi.dev/bootstrap/stage3
+    - https://packages.wolfi.dev/os
+    keyring:
+    - https://packages.wolfi.dev/bootstrap/stage3/wolfi-signing.rsa.pub
+    - https://packages.wolfi.dev/os/wolfi-signing.rsa.pub
+    packages:
+      - wolfi-base
+      - build-base
+      - cmake
+      - nasm
+
+pipeline:
+  - uses: git-checkout
+    with:
+      repository: https://github.com/libjpeg-turbo/buildscripts.git
+      tag: ${{package.version}}
+      destination: ${{package.name}}
+      expected-commit: dd335b3f958fd8e2b38295ea47bf922b2f229b64
+#  - uses: cmake/configure
+#    with: 
+#      opts: -G"Unix Makefiles"
+  - runs: |
+      set -x
+      BUILD_DIR="/home/build/libjpeg-turbo/output"
+      EXEC_DIR="${{targets.destdir}}/usr/lib"
+      mkdir -p "${BUILD_DIR}" "${EXEC_DIR}"
+      cd "${BUILD_DIR}"
+      cmake -G"Unix Makefiles" /home/build/libjpeg-turbo
+      echo "Checking for binaries..."
+      ls /home/build/libjpeg-turbo/output
+      make
+      echo "Checking again!!!!"
+      ls /home/build/libjpeg-turbo/output
+      cp ./libjpeg.so.62.4.0 "${EXEC_DIR}"
+      cp ./libjpeg.so.62 "${EXEC_DIR}"
+      chmod +x "${EXEC_DIR}/libjpeg.so.62.4.0"
+      chmod +x "${EXEC_DIR}/libjpeg.so.62"
+#  - working-directory: output
+#  - runs: |
+#      cmake -G"Unix Makefiles" ../
+#  - uses: cmake/build
+#  - uses: cmake/install
+    
+  
+
