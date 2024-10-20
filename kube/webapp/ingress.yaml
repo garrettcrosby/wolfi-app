@@ -1,0 +1,49 @@
+---
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: wolfinotes-cert
+spec:
+  domains:
+    - wolfinotes.app
+    - www.wolfinotes.app
+---
+apiVersion: networking.gke.io/v1beta1
+kind: FrontendConfig
+metadata:
+  name: networking-fc
+spec:
+  redirectToHttps:
+    enabled: true
+    responseCodeName: MOVED_PERMANENTLY_DEFAULT
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: LoadBalancer
+  selector:
+    app: notes-app
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  annotations:
+    networking.gke.io/managed-certificates: wolfinotes-cert
+    networking.gke.io/v1beta1.FrontendConfig: networking-fc
+    kubernetes.io/ingress.global-static-ip-name: wolfinotes
+    kubernetes.io/ingress.class: gce
+  labels:
+    app: notes-app
+spec:
+  defaultBackend:
+    service:
+      name: frontend
+      port:
+        number: 80

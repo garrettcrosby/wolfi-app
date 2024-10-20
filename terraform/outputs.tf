@@ -20,3 +20,12 @@ output "kubernetes_cluster_host" {
   value       = google_container_cluster.primary.endpoint
   description = "GKE Cluster Host"
 }
+
+output "dns_zone_name_servers" {
+  value       = google_dns_managed_zone.wolfinotes-app.name_servers
+  description = "Write these virtual name servers in your base domain."
+}
+
+output "domain" {
+  value = trim(google_dns_record_set.a.name, ".")
+}

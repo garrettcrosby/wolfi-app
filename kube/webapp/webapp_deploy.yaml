@@ -18,7 +18,7 @@ spec:
         app: note-app
     spec:
       containers:
-      - image: note-app:wolfi-3
+      - image: us-central1-docker.pkg.dev/wolfi-notes/wolfi-notes/webapp:latest
         name: note-app
         envFrom:
         - configMapRef:

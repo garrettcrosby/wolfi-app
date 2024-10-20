@@ -60,7 +60,7 @@ if os.environ.get('DB_ENGINE') == 'postgres':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME', 'app_db')
+            'NAME': os.getenv('DB_NAME', 'app_db'),
             'USER': os.getenv('DB_USERNAME', 'db_user'),
             'PASSWORD': os.getenv('DB_PASS', 'password1234'),
             'HOST': os.getenv('DB_HOST', 'localhost'),

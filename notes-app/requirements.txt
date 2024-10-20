@@ -5,3 +5,4 @@ pytz==2020.1
 asgiref==3.3.0
 sqlparse==0.4.1
 setuptools
+psycopg2-binary
