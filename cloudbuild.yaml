@@ -3,7 +3,7 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 
            'us-central1-docker.pkg.dev/${PROJECT_ID}/wolfi-notes/webapp:$COMMIT_SHA', 
-           '.']
+           './notes-app']
 
   # Docker Push
   - name: 'gcr.io/cloud-builders/docker'
