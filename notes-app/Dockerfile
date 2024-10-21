@@ -28,4 +28,4 @@ ENV PATH "/note-app/venv/bin:$PATH"
 
 COPY . .
 
-ENTRYPOINT ["python", "/note-app/manage.py", "runserver"]
+ENTRYPOINT ["python", "/note-app/manage.py", "runserver", "0.0.0.0:8000"]
