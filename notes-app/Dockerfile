@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # FINAL STAGE
 FROM cgr.dev/chainguard/python:latest
-
+USER root
 WORKDIR /note-app
 
 ENV PYTHONBUFFERED 1
@@ -25,7 +25,5 @@ COPY --from=build /note-app/venv /note-app/venv
 COPY --from=build /usr/lib/libjpeg.so.8 /usr/lib/libjpeg.so.8
 
 ENV PATH "/note-app/venv/bin:$PATH"
-
 COPY . .
-
 ENTRYPOINT ["python", "/note-app/manage.py", "runserver", "0.0.0.0:8000"]
