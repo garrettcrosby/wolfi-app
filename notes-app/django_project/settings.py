@@ -15,6 +15,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '127.0.0.1:8000']
 # Application definition
 
 INSTALLED_APPS = [
+    'health_check',
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'django.contrib.admin',
