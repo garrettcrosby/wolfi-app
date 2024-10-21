@@ -16,5 +16,4 @@ urlpatterns = [
     #path('logout/', auth_views.LogoutView.as_view(template_name='users/login.html'), name='logout'),
     path('', include('blog.urls')),
     url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), # serving media files in DEBUG=FALSE mode
-    path(r'healthz/', include('health_check.urls')),
 ]
