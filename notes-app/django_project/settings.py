@@ -94,7 +94,7 @@ LANGUAGE_CODE = 'en-gb'
 TIME_ZONE = 'Europe/Berlin'
 USE_I18N = True # setting the default language for users, if their locale isn't known
 USE_L10N = True # enabling date/time to be displayed in a local format
-USE_TZ = True # enabling timezone support
+USE_TZ = False # enabling timezone support
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

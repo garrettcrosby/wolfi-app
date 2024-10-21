@@ -17,6 +17,19 @@ spec:
       labels:
         app: note-app
     spec:
+      initContainers:
+      - name: migration
+        image: us-central1-docker.pkg.dev/wolfi-notes/wolfi-notes/webapp:latest
+        command: ["python", "manage.py", "migrate"]
+        envFrom:
+        - configMapRef:
+            name: webapp-config
+        env:
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD
       containers:
       - image: us-central1-docker.pkg.dev/wolfi-notes/wolfi-notes/webapp:latest
         name: note-app
