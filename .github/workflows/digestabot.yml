@@ -26,6 +26,9 @@ jobs:
       with:
         token: ${{ secrets.PR_TOKEN }}
         signoff: true
+        use-gitsign: true
+        author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com> # optional
+        committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
         title-for-pr: 'Update Digests'
         commit-message: 'Update Digests'
         branch-for-pr: digestabot
