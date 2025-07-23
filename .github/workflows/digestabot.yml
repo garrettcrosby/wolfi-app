@@ -24,7 +24,7 @@ jobs:
     - name: update digests
       uses: chainguard-dev/digestabot@v1.0.2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PR_TOKEN }}
         signoff: true
         title-for-pr: 'Update Digests'
         commit-message: 'Update Digests'
