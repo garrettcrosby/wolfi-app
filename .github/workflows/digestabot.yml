@@ -25,10 +25,8 @@ jobs:
       uses: chainguard-dev/digestabot@v1.0.2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        signoff: true 
-        author: digestabot
-        committer: digestabot
-        labels-for-pr: automated pr, kind/cleanup, release-note-none 
-        branch-for-pr: update-digests
-        title-for-pr: Update images digests 
-        commit-message: Update images digests
+        signoff: true
+        title-for-pr: 'Update Digests'
+        commit-message: 'Update Digests'
+        branch-for-pr: digestabot
+        labels-for-pr: ''
