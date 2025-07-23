@@ -12,15 +12,15 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write # to push the updates
-      pull-requests: write # to open Pull requests
-      id-token: write # used to sign the commits using gitsign
+      contents: write 
+      pull-requests: write
+      id-token: write 
 
     steps:
     - uses: actions/checkout@v4
     - uses: chainguard-dev/digestabot@v1.0.2
       with:
-        token: ${{ secrets.CG_PULL_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         signoff: true 
         author: digestabot
         committer: digestabot
