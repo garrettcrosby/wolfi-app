@@ -18,9 +18,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - uses: chainguard-dev/digestabot@v1.0.2
+    - uses: chainguard-dev/setup-chainctl@main
       with:
-        token: ${{ secrets.CG_PULL_TOKEN }}
+        identity: "8db1c02f42c500d4c158df58938ea71dbe2d3c12/7ec62e11aab6d50d"
+    - name: update digests
+      uses: chainguard-dev/digestabot@v1.0.2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
         signoff: true 
         author: digestabot
         committer: digestabot
