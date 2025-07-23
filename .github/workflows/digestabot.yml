@@ -27,5 +27,5 @@ jobs:
         labels-for-pr: automated pr, kind/cleanup, release-note-none 
         branch-for-pr: update-digests
         title-for-pr: Update images digests 
-        description-for-pr: Update images digests 
+        description-for-pr: commit-message
         commit-message: Update images digests
