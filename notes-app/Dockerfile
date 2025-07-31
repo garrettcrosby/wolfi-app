@@ -1,5 +1,5 @@
 #BUILD STAGE
-FROM cgr.dev/garrett.crosby/python:3.13-dev@sha256:1e8c9051bae4ffdd01a0a81b8dc9cc31cfe93ec9042a5a709af9a6d52a1da50d as build
+FROM cgr.dev/garrett.crosby/python:3.13-dev@sha256:889537ec13e5fa2084dbea9a21e7dc61e408dc7c51513fd31c6dafb7e3093224 as build
 USER root
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -15,7 +15,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # FINAL STAGE
-FROM cgr.dev/garrett.crosby/python:3.13@sha256:8e5cd207e7ce6cc5bb8d8c987390aae38f2264d311c831af6ebac2ec9cd847e3
+FROM cgr.dev/garrett.crosby/python:3.13@sha256:42f3b2e5b7d0d095b70b82f9bd8eebce88c0df591b083c71faa9fe52c170cfd2
 USER root
 WORKDIR /note-app
 
